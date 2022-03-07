@@ -7,9 +7,9 @@
             "actions": [
                 {
                     "name": "Move",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "a20ca76a-b4a0-41b4-86c1-05b1d361d682",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
@@ -24,15 +24,37 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "96832126-bc9a-401a-9c60-d89d527ff45c",
-                    "path": "",
+                    "name": "Movement",
+                    "id": "9284f41e-814c-4799-88ab-67292517f90d",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Left",
+                    "id": "8a61b34b-ba43-4eb6-8509-ab5814a130ff",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "bc1ce642-6d0a-4a6c-8fbe-35cc54d4b17b",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
