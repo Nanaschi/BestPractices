@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
         _thirdPersonPlayerControls = new ThirdPersonPlayerControls();
     }
 
+    private void FixedUpdate()
+    {
+        print("Movement value " + _movement.ReadValue<Vector2>());
+    }
+
     private void OnEnable()
     {
         _movement = _thirdPersonPlayerControls.Player.Movement;
