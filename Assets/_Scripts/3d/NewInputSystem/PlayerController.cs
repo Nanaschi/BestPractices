@@ -46,11 +46,13 @@ public class PlayerController : MonoBehaviour
     {
         NewInputOnEnable();
 
+     
         _boxCollider.OnTriggerEnterAsObservable().
-            Where(trigger => trigger.TryGetComponent<IImpenetrable>(out var impenetrable))
+            Skip(1).
+            Where(trigger => trigger.GetComponent(typeof(IImpenetrable)))
             .Subscribe(_ =>
         {
-            print("Collided");
+            
         });
 
     }
