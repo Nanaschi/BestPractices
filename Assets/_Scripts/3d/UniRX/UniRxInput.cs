@@ -27,7 +27,13 @@ public class UniRxInput : MonoBehaviour
 
     private void Start()
     {
-        Observable.EveryUpdate().Subscribe(_ => { Debug.Log("UniRx Update");}).AddTo(_disposable);
+ 
+    }
+
+    private void UniRxUpdates()
+    {
+        Observable.EveryUpdate().Subscribe(_ => { Debug.Log("UniRx Update"); }).AddTo(_disposable);
+        Observable.EveryFixedUpdate().Subscribe(_ => { Debug.Log("UniRx FixedUpdate"); }).AddTo(_disposable);
     }
 
     public void OnDisable()
