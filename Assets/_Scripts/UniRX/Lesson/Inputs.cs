@@ -7,9 +7,15 @@ using UnityEngine;
 
 public class Inputs : MonoBehaviour
 {
+    //Implement through new input system and bind/ inject this class
     public IObservable<Vector2> Movement { get; set; }
     public IObservable<Vector2> Mouselook { get; private set; }
 
+    public void Injected()
+    {
+        print("Injected");
+    }
+    
     private void Awake()
     {
         MovementFixedUpdate();

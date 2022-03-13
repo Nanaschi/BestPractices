@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 public class UniRXPlayerController : MonoBehaviour
 {
 
-    [SerializeField] private Inputs inputs;
+    [Inject]  [SerializeField] private Inputs inputs;
     [SerializeField] private float walkSpeed;
     [Range(-90, 0)]
     public float minViewAngle = -60f; // How much can the user look down (in degrees)
@@ -16,8 +18,14 @@ public class UniRXPlayerController : MonoBehaviour
     
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private Camera _camera;
-    
-    private void Start() {
+
+
+    private void Awake()
+    {
+        inputs.Injected();
+    }
+
+    /*private void Start() {
         inputs.Movement
             .Where(v => v != Vector2.zero)
             .Subscribe(Movement)
@@ -77,5 +85,5 @@ public class UniRXPlayerController : MonoBehaviour
         q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
 
         return q;
-    }
+    }*/
 }
