@@ -5,27 +5,36 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
+[RequireComponent(typeof(CharacterController))]
 public class UniRXPlayerController : MonoBehaviour
 {
 
-    [Inject]  [SerializeField] private Inputs inputs;
+    [Inject] private Inputs inputs;
     [SerializeField] private float walkSpeed;
     [Range(-90, 0)]
     public float minViewAngle = -60f; // How much can the user look down (in degrees)
     [Range(0, 90)]
-    public float maxViewAngle = 60f; // How much can the user look up (in degrees)
+    public float maxViewAngle = 60f; 
+    [Range(0, 90)]
+    public float _cameraSensitivity; // How much can the user look up (in degrees)
     
     
-    [SerializeField] private CharacterController _characterController;
+    private CharacterController _characterController;
     [SerializeField] private Camera _camera;
 
 
     private void Awake()
     {
         inputs.Injected();
+        UnityComponentInitialization();
     }
 
-    /*private void Start() {
+    private void UnityComponentInitialization()
+    {
+        _characterController = GetComponent<CharacterController>();
+    }
+
+    private void Start() {
         inputs.Movement
             .Where(v => v != Vector2.zero)
             .Subscribe(Movement)
@@ -45,11 +54,11 @@ public class UniRXPlayerController : MonoBehaviour
         // Translate 2D mouse input into euler angle rotations.
 
         // inputLook.x rotates the character around the vertical axis (with + being right)
-        var horzLook = inputLook.x * Time.deltaTime * Vector3.up;
+        var horzLook = inputLook.x * Time.deltaTime * Vector3.up *_cameraSensitivity;
         transform.localRotation *= Quaternion.Euler(horzLook);
 
         // inputLook.y rotates the camera around the horizontal axis (with + being up)
-        var vertLook = inputLook.y * Time.deltaTime * Vector3.left;
+        var vertLook = inputLook.y * Time.deltaTime * Vector3.left*_cameraSensitivity;
         var newQ = _camera.transform.localRotation * Quaternion.Euler(vertLook);
 
         // We have to flip the signs and positions of min/max view angle here because the math
@@ -85,5 +94,5 @@ public class UniRXPlayerController : MonoBehaviour
         q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
 
         return q;
-    }*/
+    }
 }
