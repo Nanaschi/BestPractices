@@ -7,9 +7,10 @@ using UnityEngine;
 
 public class Inputs : MonoBehaviour
 {
-    //Implement through new input system and bind/ inject this class
+    //Implement through new input system
     public IObservable<Vector2> Movement { get; set; }
     public IObservable<Vector2> Mouselook { get; private set; }
+    public ReadOnlyReactiveProperty<bool> Run { get; private set; }
 
     public void Injected()
     {
@@ -20,6 +21,14 @@ public class Inputs : MonoBehaviour
     {
         MovementFixedUpdate();
         MouseInputs();
+        RunInputs();
+    }
+
+    private void RunInputs()
+    {
+        Run = this.UpdateAsObservable()
+            .Select(_ => Input.GetButton("Fire3"))
+            .ToReadOnlyReactiveProperty();
     }
 
     private void MouseInputs()

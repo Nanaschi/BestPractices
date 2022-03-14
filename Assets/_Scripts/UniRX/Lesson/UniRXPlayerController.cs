@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
 
@@ -11,12 +12,14 @@ public class UniRXPlayerController : MonoBehaviour
 
     [Inject] private Inputs inputs;
     [SerializeField] private float walkSpeed;
+    [SerializeField] private float runSpeed;
     [Range(-90, 0)]
     public float minViewAngle = -60f; // How much can the user look down (in degrees)
     [Range(0, 90)]
     public float maxViewAngle = 60f; 
     [Range(0, 90)]
     public float _cameraSensitivity; // How much can the user look up (in degrees)
+
     
     
     private CharacterController _characterController;
@@ -68,7 +71,9 @@ public class UniRXPlayerController : MonoBehaviour
 
     private void Movement(Vector2 inputMovement)
     {
-        var inputVelocity = inputMovement * walkSpeed;
+        
+        var inputVelocity = inputMovement *
+                            (inputs.Run.Value ? runSpeed : walkSpeed);
 
         var playerVelocity =
             inputVelocity.x * transform.right +

@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1
+  runSpeed: 10
   minViewAngle: -60
   maxViewAngle: 60
   _cameraSensitivity: 30
