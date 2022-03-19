@@ -12,10 +12,6 @@ public class Inputs : MonoBehaviour
     public IObservable<Vector2> Mouselook { get; private set; }
     public ReadOnlyReactiveProperty<bool> Run { get; private set; }
 
-    public void Injected()
-    {
-        print("Injected");
-    }
     
     private void Awake()
     {

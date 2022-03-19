@@ -28,7 +28,6 @@ public class UniRXPlayerController : MonoBehaviour
 
     private void Awake()
     {
-        inputs.Injected();
         UnityComponentInitialization();
     }
 
