@@ -1,15 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GameEvents : MonoBehaviour
+namespace _Scripts.PlayerPrefs
 {
-    public event Action<int> OnDamageTaken;
-
-
-    public void DamageTaken(int amountOfDamage)
+    public class GameEvents : MonoBehaviour
     {
-        OnDamageTaken?.Invoke(amountOfDamage);
+        public EventHandler<OnDamageTakenArgs> OnDamageTaken;
     }
 }

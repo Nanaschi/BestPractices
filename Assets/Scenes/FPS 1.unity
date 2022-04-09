@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 463576441}
   - component: {fileID: 463576442}
   - component: {fileID: 463576443}
+  - component: {fileID: 463576444}
   m_Layer: 0
   m_Name: PlayerInstaller
   m_TagString: Untagged
@@ -293,6 +294,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9fab5a4f9800640bdaa7928e2dd007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &463576444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463576440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb64d4a85513814e85299fcce9b8225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &803820050
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157c9ee90e944bd4cbb6cb24bbe2b746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amountOfHealth: 100
+  _currentAmountOfHealth: 50
   _textMeshProHealth: {fileID: 1683165693}
 --- !u!4 &803820052
 Transform:
@@ -355,8 +368,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0baac1e5f93d14f8b3a5d3c3ce8cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerStats: {fileID: 803820051}
   walkSpeed: 1
-  runSpeed: 10
+  _currentRunSpeed: 10
   minViewAngle: -60
   maxViewAngle: 60
   _cameraSensitivity: 30
@@ -858,7 +872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94519219a81f33b44aff7d693b5b9163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amountOfDamageToTake: 5
+  _onDamageTakenArgs:
+    damageTaken: 5
 --- !u!1 &1683165691
 GameObject:
   m_ObjectHideFlags: 0

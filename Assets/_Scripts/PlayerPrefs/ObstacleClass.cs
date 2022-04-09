@@ -1,20 +1,19 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class ObstacleClass : MonoBehaviour
+namespace _Scripts.PlayerPrefs
 {
-
-    [SerializeField] private int _amountOfDamageToTake;
-
-    [Inject] private GameEvents _gameEvents;
-    private void OnTriggerEnter(Collider other)
+    public class ObstacleClass : MonoBehaviour
     {
-        if (other.TryGetComponent(out PlayerStats playerStats))
+        [SerializeField] private OnDamageTakenArgs _onDamageTakenArgs;
+
+        [Inject] private GameEvents _gameEvents;
+        private void OnTriggerEnter(Collider other)
         {
-            _gameEvents.DamageTaken(_amountOfDamageToTake);
+            if (other.TryGetComponent(out PlayerStats playerStats))
+            {
+                _gameEvents.OnDamageTaken(this, _onDamageTakenArgs);
+            }
         }
     }
 }

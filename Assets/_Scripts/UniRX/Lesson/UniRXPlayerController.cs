@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.PlayerPrefs;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -110,8 +111,8 @@ public class UniRXPlayerController : MonoBehaviour
 
 
 
-    private void ReduceRunSpeed(int amountOfSpeedToReduce)
+    private void ReduceRunSpeed(object sender, OnDamageTakenArgs onDamageTakenArgs)
     {
-        _currentRunSpeed -=  (float)amountOfSpeedToReduce * _maximumRunSpeed/_playerStats.MaximumAmountOfHealth;
+        _currentRunSpeed -=  (float)onDamageTakenArgs.DamageTaken * _maximumRunSpeed/_playerStats.MaximumAmountOfHealth;
     }
 }
