@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
@@ -11,8 +12,10 @@ public class UniRXPlayerController : MonoBehaviour
 {
 
     [Inject] private Inputs inputs;
+    [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private float walkSpeed;
-    [SerializeField] private float runSpeed;
+    [FormerlySerializedAs("currentRunSpeed")] [FormerlySerializedAs("runSpeed")] [SerializeField] private float _currentRunSpeed;
+    private float _maximumRunSpeed;
     [Range(-90, 0)]
     public float minViewAngle = -60f; // How much can the user look down (in degrees)
     [Range(0, 90)]
@@ -20,14 +23,19 @@ public class UniRXPlayerController : MonoBehaviour
     [Range(0, 90)]
     public float _cameraSensitivity; // How much can the user look up (in degrees)
 
-    
-    
     private CharacterController _characterController;
     [SerializeField] private Camera _camera;
+    [Inject] private GameEvents _gameEvents;
 
+
+    private void OnEnable()
+    {
+        _gameEvents.OnDamageTaken += ReduceRunSpeed;
+    }
 
     private void Awake()
     {
+        _maximumRunSpeed = _currentRunSpeed;
         UnityComponentInitialization();
     }
 
@@ -72,7 +80,7 @@ public class UniRXPlayerController : MonoBehaviour
     {
         
         var inputVelocity = inputMovement *
-                            (inputs.Run.Value ? runSpeed : walkSpeed);
+                            (inputs.Run.Value ? _currentRunSpeed : walkSpeed);
 
         var playerVelocity =
             inputVelocity.x * transform.right +
@@ -98,5 +106,12 @@ public class UniRXPlayerController : MonoBehaviour
         q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
 
         return q;
+    }
+
+
+
+    private void ReduceRunSpeed(int amountOfSpeedToReduce)
+    {
+        _currentRunSpeed -=  (float)amountOfSpeedToReduce * _maximumRunSpeed/_playerStats.MaximumAmountOfHealth;
     }
 }

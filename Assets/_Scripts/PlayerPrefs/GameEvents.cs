@@ -7,6 +7,7 @@ public class GameEvents : MonoBehaviour
 {
     public event Action<int> OnDamageTaken;
 
+
     public void DamageTaken(int amountOfDamage)
     {
         OnDamageTaken?.Invoke(amountOfDamage);

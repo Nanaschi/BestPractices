@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private int _amountOfHealth;
+    [FormerlySerializedAs("_amountOfHealth")] [SerializeField] private int _currentAmountOfHealth;
     [Inject] private GameEvents amountOfDamage;
+    private int _maximumAmountOfHealth;
+
+    public int MaximumAmountOfHealth => _maximumAmountOfHealth;
 
     private void OnEnable()
     {
@@ -24,14 +28,15 @@ public class PlayerStats : MonoBehaviour
 
     private void SetCurrentHealth()
     {
-        _textMeshProHealth.text = _amountOfHealth.ToString();
+        _maximumAmountOfHealth = _currentAmountOfHealth;
+        _textMeshProHealth.text = _currentAmountOfHealth.ToString();
     }
 
 
     private void ReduceCurrentHealth(int amountOfDamageTaken)
     {
-        _amountOfHealth -= amountOfDamageTaken;
-        _textMeshProHealth.text = _amountOfHealth.ToString();
+        _currentAmountOfHealth -= amountOfDamageTaken;
+        _textMeshProHealth.text = _currentAmountOfHealth.ToString();
     }
 
 
