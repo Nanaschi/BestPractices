@@ -12,7 +12,8 @@ namespace _Scripts.PlayerPrefs
         {
             if (other.TryGetComponent(out PlayerStats playerStats))
             {
-                _gameEvents.OnDamageTaken(this, _onDamageTakenArgs);
+                /*_gameEvents.OnDamageTaken?.Invoke(this, _onDamageTakenArgs);*/
+                _gameEvents.InvokeGameEvent(this, _onDamageTakenArgs);
             }
         }
     }
