@@ -5,14 +5,14 @@ namespace _Scripts.PlayerPrefs
 {
     public class ObstacleClass : MonoBehaviour
     {
-        [SerializeField] private OnDamageTakenArgs _onDamageTakenArgs;
+        [SerializeField] private OnHealthChangedArgs onHealthChangedArgs;
 
-        [Inject] private GameEvents _gameEvents;
+        [Inject] private GameEventsInject _gameEventsInject;
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out PlayerStats playerStats))
             {
-                _gameEvents.InvokeOnDamageTaken(gameObject, _onDamageTakenArgs);
+                _gameEventsInject.InvokeOnDamageTaken(onHealthChangedArgs);
             }
         }
     }

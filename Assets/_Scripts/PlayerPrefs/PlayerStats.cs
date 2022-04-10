@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -7,47 +8,68 @@ namespace _Scripts.PlayerPrefs
 {
     public class PlayerStats : MonoBehaviour
     {
-        [SerializeField] private int _currentAmountOfHealth;
+        [SerializeField] private PlayerModel _playerModel;
         
-        
-        [Inject] private GameEvents _gameEvents;
-        [Inject] private PersistentData _persistentData;
-        
+        [Inject] private GameEventsInject _gameEventsInject;
+
+        [Inject] private PersistentDataInject _persistentDataInject;
+
         private int _maximumAmountOfHealth;
+
+
+        private const string CurrentHealth = "Current health";
 
         public int MaximumAmountOfHealth => _maximumAmountOfHealth;
 
-        private void OnEnable()
+
+        private void Update()
         {
-            _gameEvents.OnDamageTaken += ReduceCurrentHealth;
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                _persistentDataInject.SaveFloatData
+                    (CurrentHealth, _playerModel.CurrentAmountOfHealth);
+            } else if(Input.GetKeyDown(KeyCode.F9))
+            {
+                _playerModel.CurrentAmountOfHealth =
+                    (int) _persistentDataInject.LoadFloatData
+                        (CurrentHealth, _playerModel.CurrentAmountOfHealth);
+                SetCurrentHealth(_playerModel);
+            }
         }
 
-
+        private void OnEnable()
+        {
+            _gameEventsInject.OnDamageTaken += ReduceCurrentHealth;
+            _gameEventsInject.OnSave += SetCurrentHealth;
+        }
         [SerializeField] private TextMeshProUGUI _textMeshProHealth;
         private void Start()
         {
-            _persistentData.LoadFloatData("Current amount of health", _currentAmountOfHealth);
-            SetCurrentHealth();
+            SetMaximumAmountOfHealth();
+            SetCurrentHealth(_playerModel);
         }
 
-        private void SetCurrentHealth()
+        private void SetCurrentHealth(PlayerModel playerModel)
         {
-            _maximumAmountOfHealth = _currentAmountOfHealth;
-            _textMeshProHealth.text = _currentAmountOfHealth.ToString();
+            _textMeshProHealth.text = playerModel.CurrentAmountOfHealth.ToString();
+        }
+
+        private void SetMaximumAmountOfHealth()
+        {
+            _maximumAmountOfHealth =  _playerModel.CurrentAmountOfHealth;
         }
 
 
-        private void ReduceCurrentHealth(object sender, OnDamageTakenArgs onDamageTakenArgs)
+        private void ReduceCurrentHealth(OnHealthChangedArgs onHealthChangedArgs)
         {
-            _currentAmountOfHealth -= onDamageTakenArgs.DamageTaken;
-            _persistentData.SaveFloatData("Current amount of health", _currentAmountOfHealth);
-            _textMeshProHealth.text = _currentAmountOfHealth.ToString();
+            _playerModel.CurrentAmountOfHealth -= onHealthChangedArgs.AmouneOfHealthChanged;
+            _textMeshProHealth.text =  _playerModel.CurrentAmountOfHealth.ToString();
         }
 
 
         private void OnDisable()
         {
-            _gameEvents.OnDamageTaken -= ReduceCurrentHealth;
+            _gameEventsInject.OnDamageTaken -= ReduceCurrentHealth;
         }
     }
 }

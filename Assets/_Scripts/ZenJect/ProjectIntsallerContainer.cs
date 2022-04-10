@@ -17,10 +17,10 @@ public class ProjectIntsallerContainer : MonoInstaller
     }*/
 
 
-    [SerializeField] private PersistentData _persistentData;
+    [SerializeField] private PersistentDataInject persistentDataInject;
     public override void InstallBindings()
     {
-        DontDestroyOnLoad(Instantiate(_persistentData));
-        Container.Bind<PersistentData>().FromInstance(_persistentData.GetComponent<PersistentData>()).AsSingle();
+        DontDestroyOnLoad(Instantiate(persistentDataInject));
+        Container.Bind<PersistentDataInject>().FromInstance(persistentDataInject.GetComponent<PersistentDataInject>()).AsSingle();
     }
 }

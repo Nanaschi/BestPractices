@@ -9,17 +9,17 @@ using Zenject;
 public class GameSceneInstaller : MonoInstaller
 {
    private Inputs _inputs;
-   private GameEvents _gameEvents;
+   private GameEventsInject _gameEventsInject;
     public override void InstallBindings()
     {
         UnityComponentsInitialization();
         Container.Bind<Inputs>().FromInstance(_inputs).AsSingle();
-        Container.Bind<GameEvents>().FromInstance(_gameEvents).AsSingle();
+        Container.Bind<GameEventsInject>().FromInstance(_gameEventsInject).AsSingle();
     }
 
     private void UnityComponentsInitialization()
     {
         _inputs = GetComponent<Inputs>();
-        _gameEvents = GetComponent<GameEvents>();
+        _gameEventsInject = GetComponent<GameEventsInject>();
     }
 }

@@ -26,17 +26,17 @@ public class UniRXPlayerController : MonoBehaviour
 
     private CharacterController _characterController;
     [SerializeField] private Camera _camera;
-    [Inject] private GameEvents _gameEvents;
+    [Inject] private GameEventsInject _gameEventsInject;
 
 
     private void OnEnable()
     {
-        _gameEvents.OnDamageTaken += ReduceRunSpeed;
+        _gameEventsInject.OnDamageTaken += ReduceRunSpeed;
     }
 
     private void OnDisable()
     {
-        _gameEvents.OnDamageTaken -= ReduceRunSpeed;
+        _gameEventsInject.OnDamageTaken -= ReduceRunSpeed;
     }
 
     private void Awake()
@@ -115,8 +115,8 @@ public class UniRXPlayerController : MonoBehaviour
     }
     
 
-    private void ReduceRunSpeed(object sender, OnDamageTakenArgs onDamageTakenArgs)
+    private void ReduceRunSpeed(OnHealthChangedArgs onHealthChangedArgs)
     {
-        _currentRunSpeed -=  onDamageTakenArgs.DamageTaken * _maximumRunSpeed/_playerStats.MaximumAmountOfHealth;
+        _currentRunSpeed -=  onHealthChangedArgs.AmouneOfHealthChanged * _maximumRunSpeed/_playerStats.MaximumAmountOfHealth;
     }
 }

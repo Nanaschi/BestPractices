@@ -73,4 +73,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0378dba78389c74d9cc97cedd55118c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _persistentData: {fileID: 7933354292522208805, guid: ba349601f3c3aee438a2f868915ffb58, type: 3}
+  persistentDataInject: {fileID: 7933354292522208805, guid: ba349601f3c3aee438a2f868915ffb58, type: 3}
