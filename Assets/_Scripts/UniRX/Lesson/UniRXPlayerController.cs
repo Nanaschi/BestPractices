@@ -34,6 +34,11 @@ public class UniRXPlayerController : MonoBehaviour
         _gameEvents.OnDamageTaken += ReduceRunSpeed;
     }
 
+    private void OnDisable()
+    {
+        _gameEvents.OnDamageTaken -= ReduceRunSpeed;
+    }
+
     private void Awake()
     {
         _maximumRunSpeed = _currentRunSpeed;
@@ -108,11 +113,10 @@ public class UniRXPlayerController : MonoBehaviour
 
         return q;
     }
-
-
+    
 
     private void ReduceRunSpeed(object sender, OnDamageTakenArgs onDamageTakenArgs)
     {
-        _currentRunSpeed -=  (float)onDamageTakenArgs.DamageTaken * _maximumRunSpeed/_playerStats.MaximumAmountOfHealth;
+        _currentRunSpeed -=  onDamageTakenArgs.DamageTaken * _maximumRunSpeed/_playerStats.MaximumAmountOfHealth;
     }
 }

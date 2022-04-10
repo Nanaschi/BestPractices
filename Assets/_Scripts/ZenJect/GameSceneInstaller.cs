@@ -6,7 +6,7 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(Inputs))]
-public class PlayerInstaller : MonoInstaller
+public class GameSceneInstaller : MonoInstaller
 {
    private Inputs _inputs;
    private GameEvents _gameEvents;

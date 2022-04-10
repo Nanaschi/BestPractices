@@ -8,9 +8,9 @@ namespace _Scripts.PlayerPrefs
         public EventHandler<OnDamageTakenArgs> OnDamageTaken { get; set; }
 
 
-        public void InvokeGameEvent (object sender, EventArgs eventArgs)
+        public void InvokeOnDamageTaken (object sender, EventArgs eventArgs)
         {
-            OnDamageTaken?.Invoke(sender, (OnDamageTakenArgs) eventArgs);
+            OnDamageTaken?.Invoke((GameObject)sender, (OnDamageTakenArgs) eventArgs);
         }
     }
 }

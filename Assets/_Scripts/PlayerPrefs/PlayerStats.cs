@@ -7,21 +7,26 @@ namespace _Scripts.PlayerPrefs
 {
     public class PlayerStats : MonoBehaviour
     {
-        [FormerlySerializedAs("_amountOfHealth")] [SerializeField] private int _currentAmountOfHealth;
-        [Inject] private GameEvents amountOfDamage;
+        [SerializeField] private int _currentAmountOfHealth;
+        
+        
+        [Inject] private GameEvents _gameEvents;
+        [Inject] private PersistentData _persistentData;
+        
         private int _maximumAmountOfHealth;
 
         public int MaximumAmountOfHealth => _maximumAmountOfHealth;
 
         private void OnEnable()
         {
-            amountOfDamage.OnDamageTaken += ReduceCurrentHealth;
+            _gameEvents.OnDamageTaken += ReduceCurrentHealth;
         }
 
 
         [SerializeField] private TextMeshProUGUI _textMeshProHealth;
         private void Start()
         {
+            _persistentData.LoadFloatData("Current amount of health", _currentAmountOfHealth);
             SetCurrentHealth();
         }
 
@@ -35,13 +40,14 @@ namespace _Scripts.PlayerPrefs
         private void ReduceCurrentHealth(object sender, OnDamageTakenArgs onDamageTakenArgs)
         {
             _currentAmountOfHealth -= onDamageTakenArgs.DamageTaken;
+            _persistentData.SaveFloatData("Current amount of health", _currentAmountOfHealth);
             _textMeshProHealth.text = _currentAmountOfHealth.ToString();
         }
 
 
         private void OnDisable()
         {
-            amountOfDamage.OnDamageTaken -= ReduceCurrentHealth;
+            _gameEvents.OnDamageTaken -= ReduceCurrentHealth;
         }
     }
 }
