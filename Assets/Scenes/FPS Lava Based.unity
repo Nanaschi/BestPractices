@@ -352,8 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94519219a81f33b44aff7d693b5b9163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onDamageTakenArgs:
-    damageTaken: 10
+  onHealthChangedArgs:
+    amouneOfHealthChanged: 5
 --- !u!65 &568188016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -449,7 +449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157c9ee90e944bd4cbb6cb24bbe2b746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentAmountOfHealth: 50
+  _playerModel:
+    _currentAmountOfHealth: 50
   _textMeshProHealth: {fileID: 1683165693}
 --- !u!4 &803820052
 Transform:
@@ -983,8 +984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94519219a81f33b44aff7d693b5b9163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onDamageTakenArgs:
-    damageTaken: 5
+  onHealthChangedArgs:
+    amouneOfHealthChanged: 10
 --- !u!1 &1683165691
 GameObject:
   m_ObjectHideFlags: 0
