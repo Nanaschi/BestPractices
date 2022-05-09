@@ -1,7 +1,8 @@
-namespace _Scripts.ECS
-{
-    public class MovableComponent
+
+    using UnityEngine;
+
+    internal struct MovableComponent
     {
-        private float _moveSpeed;
+        public CharacterController CharacterController;
+        public float Speed;
     }
-}

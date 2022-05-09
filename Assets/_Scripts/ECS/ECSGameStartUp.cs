@@ -3,7 +3,7 @@ using Leopotam.Ecs;
 using UnityEngine;
 using Voody.UniLeo;
 
-public class ECSGameStartUp : MonoBehaviour
+public partial class ECSGameStartUp : MonoBehaviour
 {
     private EcsWorld _ecsWorld;
     private EcsSystems _ecsSystems;
