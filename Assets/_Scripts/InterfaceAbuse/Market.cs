@@ -1,6 +1,7 @@
 using System;
 using _Scripts.InterfaceAbuse;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Zenject;
 
@@ -8,6 +9,9 @@ public class Market : MonoBehaviour, IPointerClickHandler, ICurrencyChanger
 {
     private float _onCurrencyRateChangedParameter;
     public event Action<float> CurrencyRateChanged;
+    public event Action CurrencyRateChanged2;
+
+
     public float OnCurrencyRateChangedParameter
     {
         get => _onCurrencyRateChangedParameter;
@@ -30,21 +34,20 @@ public class Market : MonoBehaviour, IPointerClickHandler, ICurrencyChanger
     }
 }
 
-public class PoliticalSituation: ICurrencyChanger
-{
-    public event Action<float> CurrencyRateChanged;
-    public float OnCurrencyRateChangedParameter { get; }
-}
-
-
-public class Bank
+public class AmericanBank: ICurrencyChanger
 {
     private ICurrencyChanger _isCurrencyChanger;
+    public event Action<float> CurrencyRateChanged;
+    public event Action CurrencyRateChanged2;
+    public float OnCurrencyRateChangedParameter { get; }
+
+
+    private Market _market;
     
-    public Bank(ICurrencyChanger isCurrencyChanger)
+    [Inject]
+    public AmericanBank(ICurrencyChanger isCurrencyChanger)
     {
         _isCurrencyChanger = isCurrencyChanger;
-
         Subscribe();
     }
 
@@ -60,13 +63,36 @@ public class Bank
 }
 
 
+public class CanadianBank: ICurrencyChanger
+{
+    [Inject]
+    public CanadianBank(Market isCurrencyChanger)
+    {
+
+        Subscribe();
+    }
+
+    private void Subscribe()
+    {
+        CurrencyRateChanged += Something;
+    }
+
+    private void Something(float obj)
+    {
+        throw new NotImplementedException();
+    }
+
+    public event Action<float> CurrencyRateChanged;
+    public event Action CurrencyRateChanged2;
+    public float OnCurrencyRateChangedParameter { get; }
+}
+
+
 public class WorldBank
 {
-    
-    
-    [Inject]
     public WorldBank(Market market)
     {
-        var bank = new Bank(market);
+        var bank = new CanadianBank(market);
+        var polSIt = new AmericanBank(market);
     }
 }
