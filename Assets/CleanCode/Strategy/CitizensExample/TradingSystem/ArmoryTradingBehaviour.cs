@@ -1,0 +1,22 @@
+﻿using CleanCode.Strategy.CitizensExample.Interfaces;
+
+namespace CleanCode.Strategy.CitizensExample.TradingSystem
+{
+    public class ArmoryTradingBehaviour: ITradable
+    {
+        private readonly string _characterKey;
+        private readonly ExchangeSystem _exchangeSystem;
+
+
+        ArmoryTradingBehaviour(string characterKey, ExchangeSystem exchangeSystem)
+        {
+            _characterKey = characterKey;
+            _exchangeSystem = exchangeSystem;
+        }
+        
+        public void Trade(Player player)
+        {
+            _exchangeSystem.OpenArmoryPanel(_characterKey);
+        }
+    }
+}
