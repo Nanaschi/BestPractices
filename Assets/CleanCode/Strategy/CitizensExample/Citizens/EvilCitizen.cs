@@ -8,18 +8,31 @@ namespace CleanCode.Strategy.CitizensExample
 {
     public class EvilCitizen: Citizen
     {
+        private CitizensView _citizensView1;
 
         protected override void InitializeBehaviours(CitizensView citizensView)
         {
-            citizensView.OnEvilCitizenButtonClicked += DoBehaviours;
+            _citizensView1 = citizensView;
             _tradable = new DisabledTradingBehaviour();
-            _movable = new PatrolPattern(transform, new Vector3[]{Vector3.zero});
-            _speakable = new SimpleDialogueBehaviour("cap", new DialogueSystem.DialogueSystem());
+            _movable = new FreeMovePattern(transform, new Vector3[]{});
+            _speakable = new QuestDialogueBehaviour("cap", new DialogueSystem.DialogueSystem());
+        }
+
+        private void OnEnable()
+        {
+            _citizensView1.OnEvilCitizenButtonClicked += DoBehaviours;
+        }
+
+        private void OnDisable()
+        {
+            _citizensView1.OnEvilCitizenButtonClicked += DoBehaviours;
         }
 
         private void DoBehaviours()
         {
             _tradable.Trade(new Player());
+            _movable.Move();
+            _speakable.Speak(new Player());
         }
 
         /*private void Start()

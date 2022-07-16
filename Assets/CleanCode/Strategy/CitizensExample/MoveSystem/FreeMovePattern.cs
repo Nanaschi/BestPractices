@@ -8,7 +8,7 @@ namespace CleanCode.Strategy.CitizensExample.MoveSystem
         private readonly Transform _transform;
         private readonly Vector3[] _randomPoints;
 
-        FreeMovePattern(Transform transform, Vector3[] randomPoints)
+        public FreeMovePattern(Transform transform, Vector3[] randomPoints)
         {
             _transform = transform;
             _randomPoints = randomPoints;
@@ -16,7 +16,7 @@ namespace CleanCode.Strategy.CitizensExample.MoveSystem
         
         public void Move()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Free move");
         }
     }
 }
