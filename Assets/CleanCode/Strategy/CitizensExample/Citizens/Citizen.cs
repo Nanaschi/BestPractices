@@ -6,16 +6,16 @@ namespace CleanCode.Strategy.CitizensExample
 {
     public abstract class Citizen : MonoBehaviour
     {
-        public IMovable _movable;
-        public ISpeakable _speakable;
-        public ITradable _tradable;
-        private CitizensView _citizensView;
+        protected IMovable _movable;
+        protected ISpeakable _speakable;
+        protected ITradable _tradable;
+        protected CitizensView _citizensView;
         
         [Inject]
         protected abstract void InitializeBehaviours(CitizensView citizensView);
 
 
-        public void ChangeTrading(ITradable tradable)
+        protected void ChangeTrading(ITradable tradable)
         {
             _tradable = tradable;
         }

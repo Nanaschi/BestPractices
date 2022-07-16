@@ -1,4 +1,6 @@
-﻿namespace CleanCode.Strategy.CitizensExample.TradingSystem
+﻿using UnityEngine;
+
+namespace CleanCode.Strategy.CitizensExample.TradingSystem
 {
     public class ExchangeSystem
     {
@@ -9,7 +11,7 @@
 
         public void OpenArmoryPanel(string characterKey)
         {
-            throw new System.NotImplementedException();
+            Debug.Log("I trade armor");
         }
     }
 }

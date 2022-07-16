@@ -7,9 +7,11 @@ public class UIInstaller : MonoInstaller
 {
 
     [SerializeField] private CitizensView _citizensView;
+    [SerializeField] private PlayerView _playerView;
     
     public override void InstallBindings()
     {
         Container.BindInstance(_citizensView).AsSingle();
+        Container.BindInstance(_playerView).AsSingle();
     }
 }

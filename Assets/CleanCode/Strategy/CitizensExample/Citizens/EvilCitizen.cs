@@ -8,11 +8,11 @@ namespace CleanCode.Strategy.CitizensExample
 {
     public class EvilCitizen: Citizen
     {
-        private CitizensView _citizensView1;
+        
 
         protected override void InitializeBehaviours(CitizensView citizensView)
         {
-            _citizensView1 = citizensView;
+            _citizensView = citizensView;
             _tradable = new DisabledTradingBehaviour();
             _movable = new FreeMovePattern(transform, new Vector3[]{});
             _speakable = new QuestDialogueBehaviour("cap", new DialogueSystem.DialogueSystem());
@@ -20,24 +20,24 @@ namespace CleanCode.Strategy.CitizensExample
 
         private void OnEnable()
         {
-            _citizensView1.OnEvilCitizenButtonClicked += DoBehaviours;
+            _citizensView.OnEvilCitizenButtonClicked += DoBehaviours;
         }
 
         private void OnDisable()
         {
-            _citizensView1.OnEvilCitizenButtonClicked += DoBehaviours;
+            _citizensView.OnEvilCitizenButtonClicked += DoBehaviours;
         }
 
         private void DoBehaviours()
         {
-            _tradable.Trade(new Player());
-            _movable.Move();
-            _speakable.Speak(new Player());
+            Trade(new Player());
+            Move();
+            Speak(new Player());
         }
 
-        /*private void Start()
+        private void Start()
         {
             ChangeTrading(new ArmoryTradingBehaviour("123", new ExchangeSystem()));
-        }*/
+        }
     }
 }
