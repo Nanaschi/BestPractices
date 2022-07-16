@@ -11,7 +11,7 @@ namespace CleanCode.Strategy.CitizensExample.DialogueSystem
 
         public void OpenQuestDialogue(string key)
         {
-            Debug.Log("Quest started");
+            /*Debug.Log("Quest started");*/
         }
     }
 }

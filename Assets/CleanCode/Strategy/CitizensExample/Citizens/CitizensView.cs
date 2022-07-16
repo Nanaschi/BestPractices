@@ -30,7 +30,8 @@ public class CitizensView : MonoBehaviour
     {
         foreach (var text in texts)
         {
-            _evilCitizebText.text = String.Concat(text, "/n");
+            var finalText =  string.Join("\n", texts);
+            _evilCitizebText.text = finalText;
         }
     }
     
