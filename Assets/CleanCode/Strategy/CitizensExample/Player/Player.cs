@@ -6,7 +6,7 @@ namespace CleanCode.Strategy.CitizensExample
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private float _minKarma, _maxKarma;
+        [SerializeField] private float _minKarma, _maxKarma, _currentKarma;
         [SerializeField] private bool _wholeNumbers;
         private PlayerView _playerView;
 
@@ -37,6 +37,7 @@ namespace CleanCode.Strategy.CitizensExample
         private void GiveValue(float obj)
         {
             _playerView.SetTextValue(obj);
+            _currentKarma =  _playerView.GetCurrentSliderValue();
         }
 
        

@@ -8,7 +8,7 @@ namespace CleanCode.Strategy.CitizensExample
 {
     public class EvilCitizen: Citizen
     {
-        
+        [SerializeField] private Player _player;
 
         protected override void InitializeBehaviours(CitizensView citizensView)
         {
@@ -30,9 +30,9 @@ namespace CleanCode.Strategy.CitizensExample
 
         private void DoBehaviours()
         {
-            Trade(new Player());
+            Trade(_player);
             Move();
-            Speak(new Player());
+            Speak(_player);
         }
 
         private void Start()

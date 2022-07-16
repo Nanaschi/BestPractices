@@ -844,6 +844,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5827112466503509179, guid: ddd04b517c5eac142a33f409869c5272, type: 3}
   m_PrefabInstance: {fileID: 4428573581774721214}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1364260807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1364260807, guid: ddd04b517c5eac142a33f409869c5272, type: 3}
+  m_PrefabInstance: {fileID: 4428573581774721214}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f334bc680718487691f965dd80f44d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1718500929 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5730117218423788926, guid: ddd04b517c5eac142a33f409869c5272, type: 3}
@@ -1048,6 +1059,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6133275514971315293, guid: 8bb899ea9d970f445b976b588d69777f, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1364260807}
     - target: {fileID: 6644717114430987825, guid: 8bb899ea9d970f445b976b588d69777f, type: 3}
       propertyPath: m_Name
       value: EvilCitizen

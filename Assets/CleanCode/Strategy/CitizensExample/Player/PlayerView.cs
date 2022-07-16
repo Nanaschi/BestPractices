@@ -15,6 +15,7 @@ public class PlayerView : MonoBehaviour
     public void SetSliderMaxValue(float maxValue) => _playerSlider.maxValue = maxValue;
     public void SetSliderWholeNumbers(bool wholeNumbers) => _playerSlider.wholeNumbers = wholeNumbers;
     public void SetTextValue<T>(T textValue) => _playerSliderText.text = textValue.ToString();
+    public float GetCurrentSliderValue() => _playerSlider.value;
 
     public event Action<float> OnPlayerSliderChanged;
 
