@@ -582,6 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _evilCitizenButton: {fileID: 999108011966700179}
+  _evilCitizebText: {fileID: 2076695862}
 --- !u!1 &1108167389
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,6 +957,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2076695862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1950243365687286582, guid: 8bb899ea9d970f445b976b588d69777f, type: 3}
+  m_PrefabInstance: {fileID: 999108011966700177}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &999108011966700177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -963,6 +975,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1016666187}
     m_Modifications:
+    - target: {fileID: 1950243365687286582, guid: 8bb899ea9d970f445b976b588d69777f, type: 3}
+      propertyPath: m_text
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950243365687286582, guid: 8bb899ea9d970f445b976b588d69777f, type: 3}
+      propertyPath: m_fontSize
+      value: 47.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6051512423751572929, guid: 8bb899ea9d970f445b976b588d69777f, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -14,9 +14,9 @@ namespace CleanCode.Strategy.CitizensExample.MoveSystem
             _randomPoints = randomPoints;
         }
         
-        public void Move()
+        public string Move()
         {
-            Debug.Log("Free move");
+         return "Free move";
         }
     }
 }

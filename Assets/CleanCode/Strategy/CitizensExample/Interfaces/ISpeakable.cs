@@ -2,6 +2,6 @@
 {
     public interface ISpeakable
     {
-        void Speak(Player player);
+        string Speak(Player player);
     }
 }

@@ -14,10 +14,10 @@ namespace CleanCode.Strategy.CitizensExample.DialogueSystem
         }
         
         
-        public void Speak(Player player)
+        public string Speak(Player player)
         {
-            _dialogueSystem.OpenQuestDialogue(_characterKey);
-            
+             _dialogueSystem.OpenQuestDialogue(_characterKey);
+             return "QuestDialogueBehaviour";
         }
     }
 }

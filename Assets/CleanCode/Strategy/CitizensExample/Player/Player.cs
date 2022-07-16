@@ -4,42 +4,47 @@ using Zenject;
 
 namespace CleanCode.Strategy.CitizensExample
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IHaveKarma
+
     {
-        [SerializeField] private float _minKarma, _maxKarma, _currentKarma;
-        [SerializeField] private bool _wholeNumbers;
-        private PlayerView _playerView;
+    [SerializeField] private float _minKarma, _maxKarma, _currentKarma;
+    [SerializeField] private bool _wholeNumbers;
+    private PlayerView _playerView;
 
-        [Inject]
-        public void Initialize(PlayerView playerView)
-        {
-            _playerView = playerView;
-            _playerView.SetSliderMinValue(_minKarma);
-            _playerView.SetSliderMaxValue(_maxKarma);
-            _playerView.SetSliderWholeNumbers(_wholeNumbers);
-            _playerView.SetTextValue(_minKarma);
-        }
+    public event Action<float> OnKarmaChanged;
 
-        #region OnEnable/ OnDisable
+    [Inject]
+    public void Initialize(PlayerView playerView)
+    {
+        _playerView = playerView;
+        _playerView.SetSliderMinValue(_minKarma);
+        _playerView.SetSliderMaxValue(_maxKarma);
+        _playerView.SetSliderWholeNumbers(_wholeNumbers);
+        _playerView.SetTextValue(_minKarma);
+    }
 
-        private void OnEnable()
-        {
-            _playerView.OnPlayerSliderChanged += GiveValue;
-        }
-        private void OnDisable()
-        {
-            _playerView.OnPlayerSliderChanged -= GiveValue;
-        }
+    #region OnEnable/ OnDisable
 
-        #endregion
+    private void OnEnable()
+    {
+        _playerView.OnPlayerSliderChanged += ChangeKarma;
+    }
+
+    private void OnDisable()
+    {
+        _playerView.OnPlayerSliderChanged -= ChangeKarma;
+    }
+
+    #endregion
 
 
-        private void GiveValue(float obj)
-        {
-            _playerView.SetTextValue(obj);
-            _currentKarma =  _playerView.GetCurrentSliderValue();
-        }
+    private void ChangeKarma(float karmaAmount)
+    {
+        _playerView.SetTextValue(karmaAmount);
+        _currentKarma = _playerView.GetCurrentSliderValue();
+        OnKarmaChanged?.Invoke(karmaAmount);
+    }
 
-       
+    
     }
 }

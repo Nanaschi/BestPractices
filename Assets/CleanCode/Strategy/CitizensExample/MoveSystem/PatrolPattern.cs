@@ -15,9 +15,9 @@ namespace CleanCode.Strategy.CitizensExample.MoveSystem
             _patrolPoints = patrolPoints;
         }
 
-        public void Move()
+        public string Move()
         {
-            throw new System.NotImplementedException();
+            return "Patrol Move";
         }
     }
 }

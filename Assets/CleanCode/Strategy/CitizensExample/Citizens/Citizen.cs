@@ -17,21 +17,21 @@ namespace CleanCode.Strategy.CitizensExample
 
         protected void ChangeTrading(ITradable tradable)
         {
-            _tradable = tradable;
+            _tradable = tradable.Equals(_tradable) ? _tradable : tradable;
         }
-        public void Trade(Player player)
+        public string Trade(Player player)
         {
-            _tradable.Trade(player);
-        }
-
-        public void Move()
-        {
-            _movable.Move();
+            return _tradable.Trade(player);
         }
 
-        public void Speak(Player player)
+        public string Move()
         {
-            _speakable.Speak(player);
+            return _movable.Move();
+        }
+
+        public string Speak(Player player)
+        {
+            return _speakable.Speak(player);
         }
     }
 }

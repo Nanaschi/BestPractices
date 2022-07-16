@@ -6,9 +6,9 @@ namespace CleanCode.Strategy.CitizensExample.TradingSystem
     public class DisabledTradingBehaviour: ITradable
     {
 
-        public void Trade(Player player)
+        public string Trade(Player player)
         {
-            Debug.Log("No trading is available");
+            return "No trading is available";
         }
     }
 }

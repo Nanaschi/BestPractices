@@ -14,9 +14,10 @@ namespace CleanCode.Strategy.CitizensExample.TradingSystem
             _exchangeSystem = exchangeSystem;
         }
 
-        public void Trade(Player player)
+        public string Trade(Player player)
         {
             _exchangeSystem.OpenArmoryPanel(_characterKey);
+            return "I trade armor";
         }
     }
 }

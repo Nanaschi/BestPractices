@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using CleanCode.Strategy.CitizensExample.DialogueSystem;
 using CleanCode.Strategy.CitizensExample.MoveSystem;
 using CleanCode.Strategy.CitizensExample.TradingSystem;
@@ -21,11 +21,13 @@ namespace CleanCode.Strategy.CitizensExample
         private void OnEnable()
         {
             _citizensView.OnEvilCitizenButtonClicked += DoBehaviours;
+            _player.OnKarmaChanged += ReactToKarmaChange;
         }
 
         private void OnDisable()
         {
             _citizensView.OnEvilCitizenButtonClicked += DoBehaviours;
+            _player.OnKarmaChanged -= ReactToKarmaChange;
         }
 
         private void DoBehaviours()
@@ -33,11 +35,28 @@ namespace CleanCode.Strategy.CitizensExample
             Trade(_player);
             Move();
             Speak(_player);
+            _citizensView.SetTexts(new []
+            {
+                Trade(_player),
+                Move(),
+                Speak(_player)
+            });
         }
 
-        private void Start()
+        
+        private void ReactToKarmaChange(float karmaAmount)
         {
-            ChangeTrading(new ArmoryTradingBehaviour("123", new ExchangeSystem()));
+            switch (karmaAmount)
+            {
+                case >=5:
+                    print("ArmoryTradingBehaviour");
+                    ChangeTrading(new ArmoryTradingBehaviour("123", new ExchangeSystem()));
+                    break;
+                case < 5:
+                    print("DisabledTradingBehaviour");
+                    ChangeTrading(new DisabledTradingBehaviour());
+                    break;
+            }
         }
     }
 }

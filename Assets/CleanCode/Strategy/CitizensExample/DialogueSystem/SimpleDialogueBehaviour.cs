@@ -14,9 +14,10 @@ namespace CleanCode.Strategy.CitizensExample.DialogueSystem
         }
         
         
-        public void Speak(Player player)
+        public string Speak(Player player)
         {
             _dialogueSystem.OpenSmallDialogue(_characterKey);
+            return "SimpleDialogueBehaviour";
         }
     }
 }

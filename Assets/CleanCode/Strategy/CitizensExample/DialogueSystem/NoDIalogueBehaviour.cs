@@ -4,9 +4,9 @@ namespace CleanCode.Strategy.CitizensExample.DialogueSystem
 {
     public class NoDIalogueBehaviour: ISpeakable
     {
-        public void Speak(Player player)
+        public string Speak(Player player)
         {
-            throw new System.NotImplementedException();
+            return "NoDIalogueBehaviour";
         }
     }
 }

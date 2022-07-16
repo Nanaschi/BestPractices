@@ -2,6 +2,6 @@
 {
     public interface ITradable
     {
-        void Trade(Player player);
+        string Trade(Player player);
     }
 }

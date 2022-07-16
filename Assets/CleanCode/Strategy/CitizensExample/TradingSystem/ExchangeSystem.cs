@@ -11,7 +11,7 @@ namespace CleanCode.Strategy.CitizensExample.TradingSystem
 
         public void OpenArmoryPanel(string characterKey)
         {
-            Debug.Log("I trade armor");
+            
         }
     }
 }

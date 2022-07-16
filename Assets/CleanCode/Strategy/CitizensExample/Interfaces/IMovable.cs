@@ -2,6 +2,6 @@
 {
     public interface IMovable
     {
-        void Move();
+        string Move();
     }
 }
