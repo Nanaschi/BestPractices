@@ -8,12 +8,12 @@ namespace CleanCode.Strategy.CitizensExample.TradingSystem
         private readonly ExchangeSystem _exchangeSystem;
 
 
-        ArmoryTradingBehaviour(string characterKey, ExchangeSystem exchangeSystem)
+        public ArmoryTradingBehaviour(string characterKey, ExchangeSystem exchangeSystem)
         {
             _characterKey = characterKey;
             _exchangeSystem = exchangeSystem;
         }
-        
+
         public void Trade(Player player)
         {
             _exchangeSystem.OpenArmoryPanel(_characterKey);

@@ -9,7 +9,7 @@ namespace CleanCode.Strategy.CitizensExample.MoveSystem
         private readonly Vector3[] _patrolPoints;
 
 
-        PatrolPattern(Transform transform, Vector3[] patrolPoints)
+        public PatrolPattern(Transform transform, Vector3[] patrolPoints)
         {
             _transform = transform;
             _patrolPoints = patrolPoints;

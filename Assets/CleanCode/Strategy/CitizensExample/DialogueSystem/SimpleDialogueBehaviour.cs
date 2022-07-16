@@ -7,7 +7,7 @@ namespace CleanCode.Strategy.CitizensExample.DialogueSystem
         private string _characterKey;
         private DialogueSystem _dialogueSystem;
 
-        SimpleDialogueBehaviour(string key, DialogueSystem dialogueSystem)
+        public SimpleDialogueBehaviour(string key, DialogueSystem dialogueSystem)
         {
             _characterKey = key;
             _dialogueSystem = dialogueSystem;

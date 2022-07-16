@@ -1,4 +1,5 @@
 ﻿using CleanCode.Strategy.CitizensExample.Interfaces;
+using UnityEngine;
 
 namespace CleanCode.Strategy.CitizensExample.TradingSystem
 {
@@ -7,7 +8,7 @@ namespace CleanCode.Strategy.CitizensExample.TradingSystem
 
         public void Trade(Player player)
         {
-            throw new System.NotImplementedException();
+            Debug.Log("No trading is available");
         }
     }
 }

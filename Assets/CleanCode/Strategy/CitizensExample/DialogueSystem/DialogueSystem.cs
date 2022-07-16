@@ -1,6 +1,6 @@
 ﻿namespace CleanCode.Strategy.CitizensExample.DialogueSystem
 {
-    internal class DialogueSystem
+    public class DialogueSystem
     {
         public void OpenSmallDialogue(string key)
         {
