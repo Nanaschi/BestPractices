@@ -10,7 +10,7 @@ namespace CleanCode.Strategy.CitizensExample
         protected ISpeakable _speakable;
         protected ITradable _tradable;
         protected CitizensView _citizensView;
-        
+
         [Inject]
         protected abstract void InitializeBehaviours(CitizensView citizensView);
 
