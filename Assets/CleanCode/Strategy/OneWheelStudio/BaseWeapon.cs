@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseWeapon : MonoBehaviour
+public abstract class BaseWeapon : MonoBehaviour
 {
     protected IDoDamage _doDamage;
 
@@ -21,32 +21,5 @@ public class BaseWeapon : MonoBehaviour
     protected void DoDamage(Player player)
     {
         _doDamage.DoDamage(player);
-    }
-}
-
-public interface IDoDamage
-{
-    void DoDamage(Player player);
-}
-
-public class Player
-{
-}
-
-
-public class FireDamage: IDoDamage
-{
-    public void DoDamage(Player player)
-    {
-        Debug.Log("FireDamage");
-    }
-}
-
-
-public class ToxicDamage: IDoDamage
-{
-    public void DoDamage(Player player)
-    {
-        Debug.Log("ToxicDamage");
     }
 }
