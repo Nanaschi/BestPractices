@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "com.leopotam.ecs": "https://github.com/Leopotam/ecs.git",
+    "com.peartreegames.evtgraph": "https://github.com/peartreegames/evt-graph.git",
+    "com.peartreegames.evtvariables": "https://github.com/peartreegames/evt-variables.git",
     "com.unity.2d.spriteshape": "7.0.4",
     "com.unity.cinemachine": "2.8.6",
     "com.unity.collab-proxy": "1.15.18",

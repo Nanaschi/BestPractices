@@ -7,6 +7,23 @@
       "dependencies": {},
       "hash": "f237756b2a256e112f6ae2eb314fae9682c05310"
     },
+    "com.peartreegames.evtgraph": {
+      "version": "https://github.com/peartreegames/evt-graph.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.modules.uielements": "0.1.0",
+        "com.peartreegames.evtvariables": "0.1.0"
+      },
+      "hash": "f7e4b7106337a4ec0be2bc883f296aea557666d9"
+    },
+    "com.peartreegames.evtvariables": {
+      "version": "https://github.com/peartreegames/evt-variables.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "eefbfbdb79f69212afe5100ec180af33871a1638"
+    },
     "com.unity.2d.common": {
       "version": "6.0.3",
       "depth": 1,
